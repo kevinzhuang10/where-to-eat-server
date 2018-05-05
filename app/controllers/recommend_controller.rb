@@ -5,8 +5,6 @@ class RecommendController < ApplicationController
     responses = []
 
     yelp_URL = 'https://api.yelp.com/v3/businesses/search?'
-    query = ''
-    request_URL = ''
     request_params = {
       headers: {
         Authorization: ENV['YELP_API_KEY']
