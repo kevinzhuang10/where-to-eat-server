@@ -13,10 +13,12 @@ class RecommendController < ApplicationController
 
     categories = params[:term].split(' ')
     categories.each do |category|
-      params[:term] = category
-      query_string = stringify_query(params)
-      request_URL = yelp_URL + query_string
-      responses.push(HTTParty.get(request_URL, request_params))
+      if category != 'Food'
+        params[:term] = category
+        query_string = stringify_query(params)
+        request_URL = yelp_URL + query_string
+        responses.push(HTTParty.get(request_URL, request_params))
+      end
     end
 
     recommendations = responses.map do |response|
