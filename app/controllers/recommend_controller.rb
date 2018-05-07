@@ -25,7 +25,7 @@ class RecommendController < ApplicationController
       response.parsed_response["businesses"][0]
     end
 
-    render json: recommendations
+    render json: recommendations.shuffle[0, 3]
   end
 
   def stringify_query(query_object)
